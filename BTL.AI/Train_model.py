@@ -51,8 +51,8 @@ model.fit(X_train_scaled, y_train)
 y_pred = model.predict(X_test_scaled)
 
 # Lưu lại mô hình và scaler để dùng cho việc chạy App
-joblib.dump(model, 'logistic_model.pkl')
-joblib.dump(scaler, 'scaler.pkl')
+joblib.dump(model, os.path.join(BASE_DIR, 'logistic_model.pkl'))
+joblib.dump(scaler, os.path.join(BASE_DIR, 'scaler.pkl'))
 
 # --- 4.4 Đánh giá mô hình ---
 print("Accuracy:", accuracy_score(y_test, y_pred))
