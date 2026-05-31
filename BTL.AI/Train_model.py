@@ -1,22 +1,17 @@
-import os
 import joblib
 import streamlit as st
-
-# Lấy đường dẫn tuyệt đối đến thư mục chứa file App.py trên Streamlit Cloud
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 @st.cache_resource
 def load_ml_assets():
-    # Ép đường dẫn tuyệt đối để không bao giờ bị lệch path
-    model_path = os.path.join(BASE_DIR, "logistic_model.pkl")
-    scaler_path = os.path.join(BASE_DIR, "scaler.pkl")
+    # Đi thẳng từ thư mục gốc của Repo vào thẳng thư mục BTL.AI để lấy file
+    model_path = "BTL.AI/logistic_model.pkl"
+    scaler_path = "BTL.AI/scaler.pkl"
 
     model = joblib.load(model_path)
     scaler = joblib.load(scaler_path)
 
     return model, scaler
-
 # 1. Đọc dữ liệu từ 3 doanh nghiệp 
 df_vnm = pd.read_excel("VNM.xlsx")
 df_mch = pd.read_excel("MCH.xlsx")
