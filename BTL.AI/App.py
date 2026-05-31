@@ -20,8 +20,8 @@ st.markdown("""
 # Tải tài sản học máy
 @st.cache_resource
 def load_ml_assets():
-    model = joblib.load("logistic_model.pkl")
-    scaler = joblib.load("scaler.pkl")
+    model = joblib.load(os.path.join(BASE_DIR, 'logistic_model.pkl'))
+    scaler = joblib.load(os.path.join(BASE_DIR, 'scaler.pkl'))
     return model, scaler
 
 try:
