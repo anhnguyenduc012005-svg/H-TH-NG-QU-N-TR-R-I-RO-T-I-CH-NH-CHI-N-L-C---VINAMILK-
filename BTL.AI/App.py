@@ -4,7 +4,16 @@ import numpy as np
 import joblib
 import plotly.graph_objects as go
 import plotly.express as px
+@st.cache_resource
+def load_ml_assets():
+    # Đi thẳng từ thư mục gốc của Repo vào thẳng thư mục BTL.AI để lấy file
+    model_path = "BTL.AI/logistic_model.pkl"
+    scaler_path = "BTL.AI/scaler.pkl"
 
+    model = joblib.load(model_path)
+    scaler = joblib.load(scaler_path)
+
+    return model, scaler
 # 1. CẤU HÌNH GIAO DIỆN DASHBOARD ĐẲNG CẤP
 st.set_page_config(page_title="VNM Financial Risk Dashboard", layout="wide", initial_sidebar_state="expanded")
 
