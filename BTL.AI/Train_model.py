@@ -1,5 +1,20 @@
-import pandas as pd
-import numpy as np
+import os  
+import joblib
+import streamlit as st
+
+# 2. ĐỊNH NGHĨA BASE_DIR 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+#st.cache_resource  
+def load_ml_assets():
+# 3. Sử dụng đường dẫn tuyệt đối động để Streamlit Cloud tìm đúng file
+    model_path = os.path.join(BASE_DIR, "logistic_model.pkl")
+    scaler_path = os.path.join(BASE_DIR, "scaler.pkl")
+
+    model = joblib.load(model_path)
+    scaler = joblib.load(scaler_path)
+
+    return model, scaler
 
 # 1. Đọc dữ liệu từ 3 doanh nghiệp 
 df_vnm = pd.read_excel("VNM.xlsx")
