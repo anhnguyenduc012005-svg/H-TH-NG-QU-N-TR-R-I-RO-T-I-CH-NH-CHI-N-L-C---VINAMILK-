@@ -4,16 +4,6 @@ import numpy as np
 import joblib
 import plotly.graph_objects as go
 import plotly.express as px
-@st.cache_resource
-def load_ml_assets():
-    # Đi thẳng từ thư mục gốc của Repo vào thẳng thư mục BTL.AI để lấy file
-    model_path = "BTL.AI/logistic_model.pkl"
-    scaler_path = "BTL.AI/scaler.pkl"
-
-    model = joblib.load(model_path)
-    scaler = joblib.load(scaler_path)
-
-    return model, scaler
 # 1. CẤU HÌNH GIAO DIỆN DASHBOARD ĐẲNG CẤP
 st.set_page_config(page_title="VNM Financial Risk Dashboard", layout="wide", initial_sidebar_state="expanded")
 
@@ -27,14 +17,16 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Tải tài sản học máy
+import joblib
+import streamlit as st
+
+
 @st.cache_resource
 def load_ml_assets():
-    model = joblib.load(os.path.join(BASE_DIR, 'logistic_model.pkl'))
-    scaler = joblib.load(os.path.join(BASE_DIR, 'scaler.pkl'))
+    # Đi thẳng từ thư mục gốc của Repo vào thư mục BTL.AI lấy file, không cần biến os hay BASE_DIR
+    model = joblib.load("BTL.AI/logistic_model.pkl")
+    scaler = joblib.load("BTL.AI/scaler.pkl")
     return model, scaler
-
-try:
-    model, scaler = load_ml_assets()
 
     # --- TIÊU ĐỀ CHÍNH ---
     st.markdown("<h1 style='text-align: center; color: #1E3A8A; font-family: sans-serif;'>🏛️ HỆ THỐNG QUẢN TRỊ RỦI RO TÀI CHÍNH CHIẾN LƯỢC - VINAMILK (VNM)</h1>", unsafe_allow_html=True)
