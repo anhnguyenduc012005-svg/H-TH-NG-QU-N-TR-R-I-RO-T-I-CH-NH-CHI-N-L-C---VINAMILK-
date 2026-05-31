@@ -1,13 +1,14 @@
-import os  
+import os
 import joblib
 import streamlit as st
 
-# 2. ĐỊNH NGHĨA BASE_DIR 
+# Lấy đường dẫn tuyệt đối đến thư mục chứa file App.py trên Streamlit Cloud
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-#st.cache_resource  
+
+@st.cache_resource
 def load_ml_assets():
-# 3. Sử dụng đường dẫn tuyệt đối động để Streamlit Cloud tìm đúng file
+    # Ép đường dẫn tuyệt đối để không bao giờ bị lệch path
     model_path = os.path.join(BASE_DIR, "logistic_model.pkl")
     scaler_path = os.path.join(BASE_DIR, "scaler.pkl")
 
