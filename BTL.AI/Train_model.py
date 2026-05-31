@@ -1,17 +1,6 @@
-import joblib
-import streamlit as st
+import pandas as pd
+import numpy as np
 
-
-@st.cache_resource
-def load_ml_assets():
-    # Đi thẳng từ thư mục gốc của Repo vào thẳng thư mục BTL.AI để lấy file
-    model_path = "BTL.AI/logistic_model.pkl"
-    scaler_path = "BTL.AI/scaler.pkl"
-
-    model = joblib.load(model_path)
-    scaler = joblib.load(scaler_path)
-
-    return model, scaler
 # 1. Đọc dữ liệu từ 3 doanh nghiệp 
 df_vnm = pd.read_excel("VNM.xlsx")
 df_mch = pd.read_excel("MCH.xlsx")
