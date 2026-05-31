@@ -227,5 +227,5 @@ def load_ml_assets():
             4. **Chiến lược cạnh tranh thị trường:** {profit_rec}
             """)
 
-except FileNotFoundError:
-    st.error("❌ Hệ thống không tìm thấy file bộ não học máy `logistic_model.pkl` hoặc `scaler.pkl`. Hãy chắc chắn rằng bạn đã chạy file `Train_model.py` trước đó.")
+        except FileNotFoundError:
+            st.error("❌ Hệ thống không tìm thấy file bộ não học máy `logistic_model.pkl` hoặc `scaler.pkl`. Hãy chắc chắn rằng bạn đã chạy file `Train_model.py` trước đó.")
